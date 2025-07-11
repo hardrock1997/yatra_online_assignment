@@ -1,0 +1,97 @@
+.why-choose-section {
+  background-color: white;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.25rem;
+  color: #4B5563;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-wrapper.blue {
+  background-color: #DBEAFE;
+}
+
+.icon-wrapper.green {
+  background-color: #D1FAE5;
+}
+
+.icon-wrapper.orange {
+  background-color: #FFEDD5;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  stroke: currentColor;
+}
+
+.icon-wrapper.blue .icon {
+  color: #2563EB;
+}
+
+.icon-wrapper.green .icon {
+  color: #059669;
+}
+
+.icon-wrapper.orange .icon {
+  color: #EA580C;
+}
+
+.feature h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+    color: #4B5563;
+    font-size: 1.265rem;      
+    font-weight: 500;   
+}
