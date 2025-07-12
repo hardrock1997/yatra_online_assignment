@@ -5,14 +5,16 @@ import date_picker from "../assets/date_picker.svg"
 import guests from "../assets/guests.svg"
 import Image from "next/image"
 import { useState } from "react"
+import { useRouter } from "next/navigation";
 import HotelCitiesSuggestions from "../components/HotelCitiesSuggestions"
 
 export default function HotelsSearcher() {
+  
     const [hotelDetails, setHotelDetails] = useState({
         city:"",
         checkIn:"",
         checkOut:"",
-        guests:0
+        guests:1
     })
     const [error, setError] = useState({
         city:"",
@@ -21,6 +23,8 @@ export default function HotelsSearcher() {
         guests:""
     })
     const [citySuggestions, setCitySuggestions] = useState([])
+
+    const router = useRouter();
 
     function handleChange(e) {
         const stateCopy=structuredClone(hotelDetails)
@@ -67,7 +71,17 @@ export default function HotelsSearcher() {
 
     function handleSubmitClick() {
        const result=validate(hotelDetails)
+        if (result) {
+        const searchParams = new URLSearchParams({
+            city: hotelDetails.city,
+            checkin: hotelDetails.checkIn,
+            checkout: hotelDetails.checkOut,
+            guests: hotelDetails.guests.toString(),
+        })
+
+        router.push(`/hotels?${searchParams.toString()}`)
     }
+}
 
     function handleBlur(e) {
         const stateCopy=structuredClone(error)
