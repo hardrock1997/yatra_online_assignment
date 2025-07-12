@@ -1,4 +1,4 @@
-[
+const hotels=[
   {
     "id": "hotel-1",
     "name": "The Royal Palace",
@@ -64,3 +64,4 @@
   }
 ]
 
+export default hotels

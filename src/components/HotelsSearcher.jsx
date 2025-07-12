@@ -1,7 +1,6 @@
 "use client"
 
 import styles from "../styles/hotels_searcher.module.css"
-import location from "../assets/location.svg"
 import date_picker from "../assets/date_picker.svg"
 import guests from "../assets/guests.svg"
 import Image from "next/image"
@@ -21,9 +20,7 @@ export default function HotelsSearcher() {
         checkOut:"",
         guests:""
     })
-
-    console.log(error,hotelDetails)
-
+    const [citySuggestions, setCitySuggestions] = useState([])
 
     function handleChange(e) {
         const stateCopy=structuredClone(hotelDetails)
@@ -35,9 +32,41 @@ export default function HotelsSearcher() {
 
     }
 
+    function getNextDate() {
+        if(hotelDetails.checkIn.length>0) {
+            const checkInDate = new Date(hotelDetails.checkIn);
+            const nextDay = new Date(checkInDate);
+            nextDay.setDate(checkInDate.getDate() + 1);
+            const nextDayStr = nextDay.toISOString().split("T")[0];
+            return nextDayStr
+        }
+    }
+
+    function validate() {
+        let flag=true
+        const keys=Object.keys(hotelDetails)
+        const errorCopy=structuredClone(error)
+        for(const key of keys) {
+            if(hotelDetails[key]==="" && (key==="checkIn" || key==="checkOut")) {
+                errorCopy[key]=`Please select ${key} date`
+                flag=false
+            }
+            else if(hotelDetails[key]==="" && key==="city"){
+                errorCopy[key]=`Please select a ${key}`
+                flag=false
+            }
+        }
+        if(flag) {
+            return true
+        }
+        else {
+                Object.keys(errorCopy).length>0 ?setError(errorCopy):""
+                return false
+        }
+    }
 
     function handleSubmitClick() {
-        console.log("clicked")
+       const result=validate(hotelDetails)
     }
 
     function handleBlur(e) {
@@ -50,7 +79,7 @@ export default function HotelsSearcher() {
         <div className={styles.hotel_searcher_container}>
             <h3 className={styles.main_text}>Search Hotels</h3>
             <div className={styles.details_container}>
-                <HotelCitiesSuggestions hotelDetails={hotelDetails} setHotelDetails={setHotelDetails} error={error} setError={setError}/>
+                <HotelCitiesSuggestions hotelDetails={hotelDetails} setHotelDetails={setHotelDetails} error={error} setError={setError} citySuggestions={citySuggestions} setCitySuggestions={setCitySuggestions}/>
                 <div className={styles.input_container} id="check-in">
                     <div className={styles.label_container}>
                         <Image
@@ -80,7 +109,7 @@ export default function HotelsSearcher() {
                         Check-out
                     </label>
                         </div>
-                    <input type="date" id="checkOut"  onChange={handleChange} value={hotelDetails.checkOut} name="checkOut" min={new Date().toISOString().split("T")[0]}
+                    <input type="date" id="checkOut"  onChange={handleChange} value={hotelDetails.checkOut} name="checkOut" min={getNextDate()}
                     onBlur={handleBlur}
                     />
                     <p className={styles.error}>{error.checkOut.length>0 && error.checkOut}</p>

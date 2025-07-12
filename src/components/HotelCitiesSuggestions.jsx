@@ -1,9 +1,12 @@
 import styles from "../styles/hotels_searcher.module.css"
 import Image from "next/image"
 import location from "../assets/location.svg"
-import { useEffect } from "react"
+import cities from "../citiesDB"
+import { useEffect,useRef} from "react"
 
-export default function HotelCitiesSuggestions({hotelDetails, setHotelDetails, error, setError}) {
+export default function HotelCitiesSuggestions({hotelDetails, setHotelDetails, error, setError, citySuggestions, setCitySuggestions}) {
+
+    const suggestionsRef=useRef(false)
 
     function handleChange(e) {
         const stateCopy=structuredClone(hotelDetails)
@@ -12,6 +15,7 @@ export default function HotelCitiesSuggestions({hotelDetails, setHotelDetails, e
         errorStateCopy[e.target.name]=""
         setError(errorStateCopy)
         setHotelDetails(stateCopy)
+        suggestionsRef.current=true
     }
 
     function handleBlur(e) {
@@ -20,8 +24,35 @@ export default function HotelCitiesSuggestions({hotelDetails, setHotelDetails, e
         setError(stateCopy)
     }
 
+    function getSuggestions(cities, typedCity) {
+        let citySuggestions=[]
+        for(const cityObj of cities) {
+            if(typedCity.length>0 && cityObj.city.toLowerCase().includes(typedCity.toLowerCase())) {
+                citySuggestions.push(cityObj.city)
+            }
+        }
+        setCitySuggestions(citySuggestions)
+    }
+
+    function handleClick(city) {
+        const cityClicked = citySuggestions.filter(citySuggestion=>citySuggestion===city)[0]
+        setCitySuggestions([])
+        const hotelDetailsCopy=structuredClone(hotelDetails)
+        hotelDetailsCopy["city"]=cityClicked
+        setHotelDetails(hotelDetailsCopy)
+        suggestionsRef.current=false
+    }
+
+
     useEffect(()=>{
-        console.log("useEffect")
+        let timer=setTimeout(()=>{
+            suggestionsRef.current===true ? getSuggestions(cities,hotelDetails.city):""
+        },200)
+
+        return ()=>{
+            clearTimeout(timer)
+        }
+        
     },[hotelDetails.city])
 
     return (
@@ -38,6 +69,15 @@ export default function HotelCitiesSuggestions({hotelDetails, setHotelDetails, e
             </label>
         </div>
             <input type="text" id="city" placeholder="Enter city name" onChange={handleChange} name="city" value={hotelDetails.city} onBlur={handleBlur}/>
+            {citySuggestions.length>0 && <div className={styles.city_suggestions} > 
+                {
+                    citySuggestions && citySuggestions.map((city,i)=>{
+                        return (
+                            <h4 key={i} onClick={()=>handleClick(city)}>{city}</h4>
+                        )
+                    })
+                }
+            </div>}
             <p className={styles.error}>{error.city.length>0 && error.city}</p>
     </div>
     )
