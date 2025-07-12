@@ -16,7 +16,7 @@ export function HotelContextProvider({ children}) {
 
         const hotelFromJSON = hotels?.filter(hotelObject => hotelObject.city === city);
 
-        if (hotelFromJSON.length > 0) {
+        // if (hotelFromJSON.length > 0) {
         const enrichedHotel = { ...hotelFromJSON[0] };
 
         enrichedHotel.hotelsCount = hotelFromJSON.length;
@@ -32,7 +32,10 @@ export function HotelContextProvider({ children}) {
         if (nights > 0) enrichedHotel.duration = nights;
 
         setHotelDetails(enrichedHotel);
-        }
+        // }
+        // else {
+        //   setHotelDetails([])
+        // }
     }
     }
 

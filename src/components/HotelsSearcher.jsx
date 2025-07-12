@@ -4,7 +4,7 @@ import styles from "../styles/hotels_searcher.module.css"
 import date_picker from "../assets/date_picker.svg"
 import guests from "../assets/guests.svg"
 import Image from "next/image"
-import { useState,useEffect,useRef } from "react"
+import { useState,useEffect } from "react"
 import { useRouter } from "next/navigation";
 import HotelCitiesSuggestions from "../components/HotelCitiesSuggestions"
 
@@ -23,6 +23,8 @@ export default function HotelsSearcher() {
         guests:""
     })
     const [citySuggestions, setCitySuggestions] = useState([])
+
+    const [noHotelCity, setNoHotelCity] = useState("")
 
     const router = useRouter();
 

@@ -3,9 +3,8 @@ import {useHotelContext} from "../app/HotelDetailsContextProvider"
 
 export default function HotelsRouteUpperSection() {
 
-        const {hotelDetails} = useHotelContext()
+        const {hotelDetails,queryParams} = useHotelContext()
 
-        console.log(hotelDetails?.hotelsCount)
         function formatDateRange(start, end) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
 
@@ -19,7 +18,7 @@ export default function HotelsRouteUpperSection() {
         <div >
             <section className={styles.upper_section_container}>
                 <section className={styles.left_sub_section_container}>
-                    <h3 className={styles.location}>Hotels in {hotelDetails?.city}</h3>
+                    <h3 className={styles.location}>Hotels in {hotelDetails?.city?.length>0 ? hotelDetails?.city?.length>0:queryParams.city}</h3>
                     <h3 className={styles.dates}>
                         {formatDateRange(hotelDetails?.checkin, hotelDetails?.checkout)}
                         {
@@ -35,7 +34,7 @@ export default function HotelsRouteUpperSection() {
 
                 <section className={styles.right_sub_section_container}>
                     {
-                        hotelDetails?.hotelsCount > 0 && (
+                        (
                             <h4 className={styles.hotelCount}>
                                 {hotelDetails?.hotelsCount} Hotel{hotelDetails?.hotelsCount > 1 ? "s" : ""} Found
                             </h4>

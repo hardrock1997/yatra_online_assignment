@@ -11,7 +11,7 @@ import HotelContentBody from "../../../components/HotelContentBody"
 
 export default function HotelById() {
 
-    const {queryParams, hotelDetails} = useHotelContext()
+    const {queryParams} = useHotelContext()
     const router = useRouter()
 
     function handleBack() {

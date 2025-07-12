@@ -237,6 +237,25 @@
 }
 
 
+.no_hotel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+.location_image {
+  margin-top: 40px;
+}
+
+.no_hotel p {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+
 /* ──────────────────────
    Responsive Breakpoints
 ──────────────────────── */
