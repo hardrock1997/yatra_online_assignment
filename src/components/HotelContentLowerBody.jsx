@@ -5,6 +5,7 @@ import Button from "./Button"
 import book_now_icon from "../assets/book_now_icon.svg"
 import Image from "next/image"
 import cancellation_icon from "../assets/cancellation_icon.svg"
+import StarRating from "../components/StarRating"
 
 export default function HotelContentLowerBody() {
     const {hotel}=useHotelContext()
@@ -20,7 +21,7 @@ export default function HotelContentLowerBody() {
                 <p>per night</p>
             </div>
             <div className={styles.lower_half}>
-                <PriceCardDetails firstTitle="Rating" SecondTitle="Star"/>
+                <PriceCardDetails firstTitle="Rating" SecondTitle={<StarRating rating={hotel[0]?.rating} />}/>
                 <PriceCardDetails firstTitle="Location" SecondTitle={hotel[0]?.city}/>
                 <div className={styles.price_calculation}>
                     <div className={styles.first_row}>

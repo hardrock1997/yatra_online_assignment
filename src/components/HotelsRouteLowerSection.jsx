@@ -7,6 +7,7 @@ import back_button from "../assets/back_button.svg";
 import hotels from "@/hotelsDB";
 import Button from "../../src/components/Button"
 import view_icon from "../assets/view_icon.svg"
+import StarRating from "../components/StarRating"
 
 export default function HotelsRouteLowerSection() {
   const router = useRouter();
@@ -45,7 +46,9 @@ export default function HotelsRouteLowerSection() {
           <section className={styles.lower_sub_section}>
             <section className={styles.lower_first_half}>
               <h3 className={styles.hotel_name}>{hotelDetail?.name}</h3>
-              <div className={styles.star_container}>Star</div>
+              <div className={styles.star_container}>
+                  <StarRating rating={hotelDetail.rating}/>
+              </div>
             </section>
 
             <section className={styles.lower_second_half}>

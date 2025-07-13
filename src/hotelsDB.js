@@ -69,7 +69,7 @@ const hotels=[
     "id": "hotel-7",
     "name": "Sunshine Travels Inn",
     "city": "Jaipur",
-    "rating": 4.2,
+    "rating": 4.5,
     "price": 6200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
     "description": "Budget-friendly and centrally located.",
