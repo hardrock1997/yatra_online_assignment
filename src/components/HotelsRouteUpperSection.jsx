@@ -17,7 +17,7 @@ export default function HotelsRouteUpperSection() {
     return (
         <div >
             {
-                hotelDetails.length>0 && 
+            hotelDetails.length>0 && 
             <section className={styles.upper_section_container}>
                 <section className={styles.left_sub_section_container}>
                     <h3 className={styles.location}>Hotels in {hotelDetails?.city?.length>0 ? hotelDetails?.city:queryParams.city}</h3>
