@@ -61,7 +61,52 @@ const hotels=[
     "price": 6200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
     "description": "Budget-friendly and centrally located."
-  }
+  },
+    {
+    "id": "hotel-8",
+    "name": "Sunshine Residency",
+    "city": "Bangalore",
+    "rating": 3.8,
+    "price": 2200,
+    "facilities": ["WiFi", "Gym", "Breakfast"],
+    "description": "Budget-friendly and centrally located."
+  },
+    {
+    "id": "hotel-9",
+    "name": "Sunshine Residency",
+    "city": "Bangalore",
+    "rating": 3.8,
+    "price": 2200,
+    "facilities": ["WiFi", "Gym", "Breakfast"],
+    "description": "Budget-friendly and centrally located."
+  },
+    {
+    "id": "hotel-10",
+    "name": "Sunshine Residency",
+    "city": "Bangalore",
+    "rating": 3.8,
+    "price": 2200,
+    "facilities": ["WiFi", "Gym", "Breakfast"],
+    "description": "Budget-friendly and centrally located."
+  },
+    {
+    "id": "hotel-11",
+    "name": "Sunshine Residency",
+    "city": "Bangalore",
+    "rating": 3.8,
+    "price": 2200,
+    "facilities": ["WiFi", "Gym", "Breakfast"],
+    "description": "Budget-friendly and centrally located."
+  },
+    {
+    "id": "hotel-12",
+    "name": "Sunshine Residency",
+    "city": "Bangalore",
+    "rating": 3.8,
+    "price": 2200,
+    "facilities": ["WiFi", "Gym", "Breakfast"],
+    "description": "Budget-friendly and centrally located."
+  },
 ]
 
 export default hotels

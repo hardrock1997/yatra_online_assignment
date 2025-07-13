@@ -8,12 +8,13 @@ import HotelsRouteBody from "../../components/HotelsRouteBody"
 import { useEffect} from "react"
 import { useRouter } from "next/navigation"
 import {useHotelContext} from "../HotelDetailsContextProvider"
+import Loading from "@/components/Loading"
 
 
 
 export default function HotelsRoutePage({ searchParams }) {
 
-    const {setQueryParams, hotelDetails} = useHotelContext();
+    const {setQueryParams, hotelDetails, queryParams,loading} = useHotelContext();
     const router = useRouter()
 
     async function getQueryParams() {
@@ -28,18 +29,28 @@ export default function HotelsRoutePage({ searchParams }) {
     useEffect(()=>{
         getQueryParams()
     },[])
+
+
+    useEffect(()=>{
+        localStorage.setItem('city',queryParams.city)
+
+    },[queryParams])
+
+    if(loading) {
+        return <Loading/>
+    }
     
     return (
         <div >
-            <Header headerButton={
+            {!loading && <Header headerButton={
                 <button className={styles.custom_back_button} onClick={handleBack}>
                     <Image src={back_button} width={30} height={30} alt="back_button_header"/>
                         Back to Search
                 </button>
             }
             hotelDetails={hotelDetails}
-            />
-            <HotelsRouteBody/>
+            />}
+           {!loading && <HotelsRouteBody/>}
         </div>
     )
 }

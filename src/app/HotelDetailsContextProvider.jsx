@@ -10,42 +10,46 @@ export function HotelContextProvider({ children}) {
 
     const [queryParams ,setQueryParams] = useState({})
 
+    const [loading, setLoading] = useState(false)
+
     function getHotelDetails(details) {
-    if (details) {
+      setLoading(true)
+        if (details) {
         const { city, checkin, checkout, guests } = details;
 
         const hotelFromJSON = hotels?.filter(hotelObject => hotelObject.city === city);
-
-        // if (hotelFromJSON.length > 0) {
-        const enrichedHotel = { ...hotelFromJSON[0] };
-
-        enrichedHotel.hotelsCount = hotelFromJSON.length;
-
-        if (checkin) enrichedHotel.checkin = checkin;
-        if (checkout) enrichedHotel.checkout = checkout;
-        if (guests) enrichedHotel.guests = guests;
-
-        const checkInDate = new Date(checkin);
-        const checkOutDate = new Date(checkout);
-        const diffTime = checkOutDate - checkInDate;
-        const nights = diffTime / (1000 * 60 * 60 * 24);
-        if (nights > 0) enrichedHotel.duration = nights;
-
+  
+        const enrichedHotel = [ ...hotelFromJSON];
+    
+        for(let i=0;i<hotelFromJSON.length;++i) {
+          enrichedHotel[i].hotelsCount = hotelFromJSON[i].length;
+          if (checkin) enrichedHotel[i].checkin = checkin;
+          if (checkout) enrichedHotel[i].checkout = checkout;
+          if (guests) enrichedHotel[i].guests = guests;
+          const checkInDate = new Date(checkin);
+          const checkOutDate = new Date(checkout);
+          const diffTime = checkOutDate - checkInDate;
+          const nights = diffTime / (1000 * 60 * 60 * 24);
+          if (nights > 0) enrichedHotel[i].duration = nights;
+        }
         setHotelDetails(enrichedHotel);
-        // }
-        // else {
-        //   setHotelDetails([])
-        // }
     }
     }
 
 
     useEffect(()=>{
         getHotelDetails(queryParams)
+        let timer = setTimeout(()=>{
+          setLoading(false)
+        },500)
+
+        return ()=>{
+          clearTimeout(timer)
+        }
     },[queryParams])
 
   return (
-    <HotelContext.Provider value={{ hotelDetails, setHotelDetails,queryParams,setQueryParams }}>
+    <HotelContext.Provider value={{ hotelDetails, setHotelDetails,queryParams,setQueryParams,loading }}>
       {children}
     </HotelContext.Provider>
   );

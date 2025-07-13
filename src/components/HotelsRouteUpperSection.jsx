@@ -16,11 +16,13 @@ export default function HotelsRouteUpperSection() {
 
     return (
         <div >
+            {
+                hotelDetails.length>0 && 
             <section className={styles.upper_section_container}>
                 <section className={styles.left_sub_section_container}>
                     <h3 className={styles.location}>Hotels in {hotelDetails?.city?.length>0 ? hotelDetails?.city:queryParams.city}</h3>
                     <h3 className={styles.dates}>
-                        {formatDateRange(hotelDetails?.checkin, hotelDetails?.checkout)}
+                        {formatDateRange(hotelDetails[0]?.checkin, hotelDetails[0]?.checkout)}
                         {
                             hotelDetails?.guests > 0 && (
                                 <>
@@ -36,12 +38,13 @@ export default function HotelsRouteUpperSection() {
                     {
                         (
                             <h4 className={styles.hotelCount}>
-                                {hotelDetails?.hotelsCount} Hotel{hotelDetails?.hotelsCount > 1 ? "s" : ""} Found
+                                {hotelDetails.length} Hotel{hotelDetails.length > 1 ? "s" : ""} Found
                             </h4>
                         )
                     }
                 </section>
             </section>
+            }
         </div>
     )
 }

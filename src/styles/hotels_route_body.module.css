@@ -268,8 +268,11 @@
     height: auto;
     min-height: 300px;
     overflow: hidden;
-    gap: 0; /* ✅ Ensures no horizontal space between image and content */
+    gap: 10px; /* ✅ Ensures no horizontal space between image and content */
     padding: 0; /* ✅ No internal spacing */
+    row-gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .upper_sub_section {
