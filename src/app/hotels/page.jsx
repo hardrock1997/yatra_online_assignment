@@ -2,8 +2,6 @@
 
 import Header from "@/components/Header"
 import back_button from "../../assets/back_button.svg"
-import Image from "next/image"
-import styles from "../../styles/hotels_route_body.module.css"
 import HotelsRouteBody from "../../components/HotelsRouteBody"
 import { useEffect} from "react"
 import { useRouter } from "next/navigation"

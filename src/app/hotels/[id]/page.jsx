@@ -1,19 +1,33 @@
 "use client"
 
 import Header from "@/components/Header"
-import styles from "../../../styles/hotels_route_body.module.css"
 import back_button from "../../../assets/back_button.svg"
-import Image from "next/image"
 import { useRouter } from "next/navigation"
 import {useHotelContext} from "../../HotelDetailsContextProvider"
 import HotelContentBody from "../../../components/HotelContentBody"
 import Button from "@/components/Button"
+import { useEffect} from "react"
 
 
-export default function HotelById() {
+export default function HotelById({ params }) {
 
-    const {queryParams} = useHotelContext()
+
+    const {queryParams,setQueryParams} = useHotelContext()
     const router = useRouter()
+
+    async function getHotelId() {
+        const param = await params
+        const queryParamsCopy = structuredClone(queryParams)
+        queryParamsCopy.id=param.id
+        setQueryParams(queryParamsCopy)
+    }
+
+    useEffect(()=>{
+        getHotelId()
+    },[queryParams.city])
+
+
+
 
     function handleBack() {
         const query = new URLSearchParams({...queryParams}).toString();
@@ -23,10 +37,7 @@ export default function HotelById() {
     return (
         <div>
               <Header headerButton={
-                <button className={styles.custom_back_button} onClick={handleBack}>
-                    <Image src={back_button} width={30} height={30} alt="back_button_header"/>
-                        Back to Results
-                </button>
+                <Button onClick={handleBack} styleType="custom" buttonText="Back to Results" imageSrc={back_button}/>
             }
             />
             <HotelContentBody/>

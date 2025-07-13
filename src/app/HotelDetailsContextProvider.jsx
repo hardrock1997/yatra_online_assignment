@@ -7,6 +7,7 @@ const HotelContext = createContext();
 
 export function HotelContextProvider({ children}) {
     const [hotelDetails, setHotelDetails] = useState([]);
+    const [hotel, setHotel] = useState({})
 
     const [queryParams ,setQueryParams] = useState({})
 
@@ -23,6 +24,8 @@ export function HotelContextProvider({ children}) {
     
         for(let i=0;i<hotelFromJSON.length;++i) {
           enrichedHotel[i].hotelsCount = hotelFromJSON[i].length;
+          enrichedHotel[i].contactInfo = hotelFromJSON[i].contactInfo
+          enrichedHotel[i].email = hotelFromJSON[i].email
           if (checkin) enrichedHotel[i].checkin = checkin;
           if (checkout) enrichedHotel[i].checkout = checkout;
           if (guests) enrichedHotel[i].guests = guests;
@@ -49,7 +52,7 @@ export function HotelContextProvider({ children}) {
     },[queryParams])
 
   return (
-    <HotelContext.Provider value={{ hotelDetails, setHotelDetails,queryParams,setQueryParams,loading }}>
+    <HotelContext.Provider value={{ hotelDetails, setHotelDetails,queryParams,setQueryParams,loading,setHotel,hotel }}>
       {children}
     </HotelContext.Provider>
   );

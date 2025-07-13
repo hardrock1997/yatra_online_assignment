@@ -176,14 +176,6 @@ export default function HotelsSearcher() {
                     </select>
                 </div>
             </div>
-
-            {/* <button className={styles.search_button} type="submit" onClick={handleSubmitClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="M21 21l-4.3-4.3" />
-                </svg>
-                Search Hotels
-                </button> */}
             <Button  onClick={handleSubmitClick} styleType="gradient" buttonText="Search Hotels" imageSrc={search_icon}/>
         </div>
     )

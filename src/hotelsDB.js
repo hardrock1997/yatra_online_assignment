@@ -6,7 +6,9 @@ const hotels=[
     "rating": 4.5,
     "price": 3500,
     "facilities": ["Free WiFi", "AC", "Breakfast"],
-    "description": "Elegant stay with all modern amenities."
+    "description": "Elegant stay with all modern amenities.",
+    "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
   {
     "id": "hotel-2",
@@ -15,7 +17,9 @@ const hotels=[
     "rating": 4.0,
     "price": 2900,
     "facilities": ["AC", "Parking", "Pet Friendly"],
-    "description": "Comfortable rooms in the heart of the city."
+    "description": "Comfortable rooms in the heart of the city.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
   {
     "id": "hotel-3",
@@ -24,7 +28,9 @@ const hotels=[
     "rating": 3.8,
     "price": 2200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-4",
@@ -33,7 +39,9 @@ const hotels=[
     "rating": 3.2,
     "price": 2600,
     "facilities": ["WiFi", "Gym", "Breakfast","Parking"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-5",
@@ -42,7 +50,9 @@ const hotels=[
     "rating": 3.1,
     "price": 2100,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-6",
@@ -51,7 +61,9 @@ const hotels=[
     "rating": 3.6,
     "price": 3200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-7",
@@ -60,7 +72,9 @@ const hotels=[
     "rating": 4.2,
     "price": 6200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-8",
@@ -69,7 +83,9 @@ const hotels=[
     "rating": 3.8,
     "price": 2200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-9",
@@ -78,7 +94,9 @@ const hotels=[
     "rating": 3.8,
     "price": 2200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-10",
@@ -87,7 +105,9 @@ const hotels=[
     "rating": 3.8,
     "price": 2200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-11",
@@ -96,7 +116,9 @@ const hotels=[
     "rating": 3.8,
     "price": 2200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
     {
     "id": "hotel-12",
@@ -105,7 +127,9 @@ const hotels=[
     "rating": 3.8,
     "price": 2200,
     "facilities": ["WiFi", "Gym", "Breakfast"],
-    "description": "Budget-friendly and centrally located."
+    "description": "Budget-friendly and centrally located.",
+     "contactInfo":"+91 98765 43210",
+    "email":"reservations@techhubsuites.com"
   },
 ]
 
