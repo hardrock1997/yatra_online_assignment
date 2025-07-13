@@ -4,7 +4,7 @@ import styles from "../styles/hotels_searcher.module.css"
 import date_picker from "../assets/date_picker.svg"
 import guests from "../assets/guests.svg"
 import Image from "next/image"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { useRouter } from "next/navigation";
 import HotelCitiesSuggestions from "../components/HotelCitiesSuggestions"
 import search_icon from "../assets/search_icon.svg"
