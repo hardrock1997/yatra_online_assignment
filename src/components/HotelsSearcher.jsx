@@ -4,7 +4,7 @@ import styles from "../styles/hotels_searcher.module.css"
 import date_picker from "../assets/date_picker.svg"
 import guests from "../assets/guests.svg"
 import Image from "next/image"
-import { useState,useEffect } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation";
 import HotelCitiesSuggestions from "../components/HotelCitiesSuggestions"
 import search_icon from "../assets/search_icon.svg"
@@ -28,28 +28,6 @@ export default function HotelsSearcher() {
 
     const router = useRouter();
 
-    useEffect(()=>{
-        for(const key in hotelDetails) {
-            if(key!=="guests" && hotelDetails[key].length>0) {
-                localStorage.setItem(`${key}`,hotelDetails[key])
-            }
-            else if(key==="guests") {
-                localStorage.setItem(`${key}`,+hotelDetails[key])
-            }
-        }
-       
-    },[hotelDetails.city, hotelDetails.checkIn, hotelDetails.checkOut, hotelDetails.guests])
-
-
-    useEffect(()=>{
-         const hotelDetailsCopy=structuredClone(hotelDetails)
-         const keys=Object.keys(localStorage)
-         for(const key of keys) {
-            const valueFromLocalStorage=localStorage.getItem(`${key}`)
-            hotelDetailsCopy[key]=valueFromLocalStorage
-         }
-         setHotelDetails(hotelDetailsCopy)
-    },[])
 
     function handleChange(e) {
         const stateCopy=structuredClone(hotelDetails)
@@ -108,6 +86,14 @@ export default function HotelsSearcher() {
     }
 }
 
+        function getLocalDateYYYYMMDD() {
+        const today = new Date();
+        const tzOffset = today.getTimezoneOffset() * 60000; // in ms
+        const localISOTime = new Date(today - tzOffset).toISOString().split("T")[0];
+        return localISOTime;
+        }
+
+
     function handleBlur(e) {
         const stateCopy=structuredClone(error)
         hotelDetails[e.target.name]==="" ? stateCopy[e.target.name]=`Please select ${e.target.name} date` : ""
@@ -131,7 +117,7 @@ export default function HotelsSearcher() {
                         Check-in
                      </label>
                         </div>
-                    <input type="date" id="checkIn" onChange={handleChange} value={hotelDetails.checkIn} name="checkIn" min={new Date().toISOString().split("T")[0]}
+                    <input type="date" id="checkIn" onChange={handleChange} value={hotelDetails.checkIn} name="checkIn" min={getLocalDateYYYYMMDD()}
                     onBlur={handleBlur}
                     />
                      <p className={styles.error}>{error.checkIn.length>0 && error.checkIn}</p>

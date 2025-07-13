@@ -29,12 +29,6 @@ export default function HotelsRoutePage({ searchParams }) {
         getQueryParams()
     },[])
 
-
-    useEffect(()=>{
-        localStorage.setItem('city',queryParams.city)
-
-    },[queryParams])
-
     if(loading) {
         return <Loading/>
     }
