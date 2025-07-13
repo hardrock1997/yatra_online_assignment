@@ -17,6 +17,7 @@ export default function HotelsRoutePage({ searchParams }) {
     const router = useRouter()
 
     async function getQueryParams() {
+        console.log("searchParams",searchParams)
         const details=await searchParams
         console.log("details",details)
         setQueryParams(details)
