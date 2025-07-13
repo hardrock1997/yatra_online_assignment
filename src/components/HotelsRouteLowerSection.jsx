@@ -20,7 +20,7 @@ export default function HotelsRouteLowerSection() {
 
     return (
         <div className={styles.main_lower_container}>
-        {hotelDetails?.hotelCount > 0 ? (
+        {hotelDetails?.hotelsCount > 0 ? (
         <div className={styles.main_lower_container}>
             <section className={styles.upper_sub_section}>
             <img

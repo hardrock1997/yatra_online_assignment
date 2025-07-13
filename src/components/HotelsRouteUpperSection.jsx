@@ -18,7 +18,7 @@ export default function HotelsRouteUpperSection() {
         <div >
             <section className={styles.upper_section_container}>
                 <section className={styles.left_sub_section_container}>
-                    <h3 className={styles.location}>Hotels in {hotelDetails?.city?.length>0 ? hotelDetails?.city?.length>0:queryParams.city}</h3>
+                    <h3 className={styles.location}>Hotels in {hotelDetails?.city?.length>0 ? hotelDetails?.city:queryParams.city}</h3>
                     <h3 className={styles.dates}>
                         {formatDateRange(hotelDetails?.checkin, hotelDetails?.checkout)}
                         {
