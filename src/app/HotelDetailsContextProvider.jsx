@@ -13,6 +13,9 @@ export function HotelContextProvider({ children}) {
 
     const [loading, setLoading] = useState(false)
 
+
+    console.log("hotelDetails",hotelDetails)
+
     function getHotelDetails(details) {
         setLoading(true)
         if (details) {
