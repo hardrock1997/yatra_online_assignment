@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useHotelContext } from "../../src/app/HotelDetailsContextProvider";
 import back_button from "../assets/back_button.svg";
 import hotels from "@/hotelsDB";
+import Button from "../../src/components/Button"
+import view_icon from "../assets/view_icon.svg"
 
 export default function HotelsRouteLowerSection() {
   const router = useRouter();
@@ -13,7 +15,6 @@ export default function HotelsRouteLowerSection() {
   const flag = hotels.filter((hotel) => hotel.city === queryParams.city);
 
   function handleViewDetails(hotelId) {
-    console.log(hotelId)
     hotelId && router.push(`/hotels/${hotelId}`);
   }
 
@@ -81,13 +82,7 @@ export default function HotelsRouteLowerSection() {
                 Total: ₹{hotelDetail?.price * hotelDetail?.duration} for{" "}
                 {hotelDetail?.duration} nights
               </p>
-
-              <button
-                className={styles.gradient_view_button}
-                onClick={()=>handleViewDetails(hotelDetail.id)}
-              >
-                View Details
-              </button>
+              <Button buttonText="View Details" styleType="gradient" onClick={()=>handleViewDetails(hotelDetail.id)} imageSrc={view_icon}/>
             </section>
           </section>
                     </div>
@@ -107,15 +102,7 @@ export default function HotelsRouteLowerSection() {
               : queryParams.city}
           </p>
           <p>Try searching a different city or adjust your search criteria</p>
-          <button className={styles.custom_back_button} onClick={handleBack}>
-            <Image
-              src={back_button}
-              width={30}
-              height={30}
-              alt="back_button_header"
-            />
-            Back to Search
-          </button>
+            <Button buttonText="Back to Search" styleType="gradient" onClick={handleBack} noBackImage={false} imageSrc={back_button}/>
         </div>
       ) : null}
     </div>

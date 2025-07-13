@@ -9,6 +9,7 @@ import { useEffect} from "react"
 import { useRouter } from "next/navigation"
 import {useHotelContext} from "../HotelDetailsContextProvider"
 import Loading from "@/components/Loading"
+import Button from "@/components/Button"
 
 
 
@@ -43,10 +44,7 @@ export default function HotelsRoutePage({ searchParams }) {
     return (
         <div >
             {!loading && <Header headerButton={
-                <button className={styles.custom_back_button} onClick={handleBack}>
-                    <Image src={back_button} width={30} height={30} alt="back_button_header"/>
-                        Back to Search
-                </button>
+                <Button onClick={handleBack} styleType="custom" buttonText="Back to Search" imageSrc={back_button}/>
             }
             hotelDetails={hotelDetails}
             />}

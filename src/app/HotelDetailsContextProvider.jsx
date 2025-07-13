@@ -13,7 +13,7 @@ export function HotelContextProvider({ children}) {
     const [loading, setLoading] = useState(false)
 
     function getHotelDetails(details) {
-      setLoading(true)
+        setLoading(true)
         if (details) {
         const { city, checkin, checkout, guests } = details;
 

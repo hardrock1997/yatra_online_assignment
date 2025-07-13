@@ -7,6 +7,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import {useHotelContext} from "../../HotelDetailsContextProvider"
 import HotelContentBody from "../../../components/HotelContentBody"
+import Button from "@/components/Button"
 
 
 export default function HotelById() {

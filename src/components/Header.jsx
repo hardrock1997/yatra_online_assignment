@@ -18,14 +18,14 @@ export default function Header(props) {
         {headerTitle && <div className={styles.yatra_heading}>{headerTitle}</div>}
         {headerButton && <div>{headerButton}</div>}
         {hotelDetails && <div className={styles.stats}>
-            {hotelDetails?.guests > 0 && (
-            <span>{hotelDetails.guests} Guest{hotelDetails.guests > 1 ? "s" : ""}</span>
+            {hotelDetails[0]?.guests > 0 && (
+            <span>{hotelDetails[0].guests} Guest{hotelDetails.guests > 1 ? "s" : ""}</span>
             )}
 
-            {hotelDetails?.guests > 0 && hotelDetails?.duration > 0 && <span> • </span>}
+            {hotelDetails[0]?.guests > 0 && hotelDetails[0]?.duration > 0 && <span> • </span>}
 
-            {hotelDetails?.duration > 0 && (
-            <span>{hotelDetails.duration} Night{hotelDetails.duration > 1 ? "s" : ""}</span>
+            {hotelDetails[0]?.duration > 0 && (
+            <span>{hotelDetails[0].duration} Night{hotelDetails[0].duration > 1 ? "s" : ""}</span>
             )}
         </div>}
         </header>
