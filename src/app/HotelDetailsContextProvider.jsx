@@ -17,6 +17,7 @@ export function HotelContextProvider({ children}) {
     console.log("hotelDetails",hotelDetails)
 
     function getHotelDetails(details) {
+      console.log("DETAILS IN CONTEXT",details)
         setLoading(true)
         if (details) {
         const { city, checkin, checkout, guests } = details;
