@@ -28,6 +28,29 @@ export default function HotelsSearcher() {
 
     const router = useRouter();
 
+    useEffect(()=>{
+        for(const key in hotelDetails) {
+            if(key!=="guests" && hotelDetails[key].length>0) {
+                localStorage.setItem(`${key}`,hotelDetails[key])
+            }
+            else if(key==="guests") {
+                localStorage.setItem(`${key}`,+hotelDetails[key])
+            }
+        }
+       
+    },[hotelDetails.city, hotelDetails.checkIn, hotelDetails.checkOut, hotelDetails.guests])
+
+
+    useEffect(()=>{
+         const hotelDetailsCopy=structuredClone(hotelDetails)
+         const keys=Object.keys(localStorage)
+         for(const key of keys) {
+            const valueFromLocalStorage=localStorage.getItem(`${key}`)
+            hotelDetailsCopy[key]=valueFromLocalStorage
+         }
+         setHotelDetails(hotelDetailsCopy)
+    },[])
+
 
     function handleChange(e) {
         const stateCopy=structuredClone(hotelDetails)

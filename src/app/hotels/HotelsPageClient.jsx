@@ -11,7 +11,6 @@ import Loading from "@/components/Loading"
 import Button from "@/components/Button"
 import { useSearchParams } from 'next/navigation';
 
-// { searchParams }
 
 export default function HotelsRoutePage() {
 
@@ -21,7 +20,6 @@ export default function HotelsRoutePage() {
 
     async function getQueryParams() {
             const obj = Object.fromEntries(searchParams.entries());
-            console.log(obj)
             setQueryParams(obj);
     }
 
@@ -32,6 +30,12 @@ export default function HotelsRoutePage() {
     useEffect(()=>{
         getQueryParams()
     },[])
+
+
+    useEffect(()=>{
+        localStorage.setItem('city',queryParams.city)
+
+    },[queryParams])
 
     if(loading) {
         return <Loading/>
