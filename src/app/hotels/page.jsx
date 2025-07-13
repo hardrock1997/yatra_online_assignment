@@ -8,19 +8,20 @@ import { useRouter } from "next/navigation"
 import {useHotelContext} from "../HotelDetailsContextProvider"
 import Loading from "@/components/Loading"
 import Button from "@/components/Button"
+import { useSearchParams } from 'next/navigation';
 
+// { searchParams }
 
-
-export default function HotelsRoutePage({ searchParams }) {
+export default function HotelsRoutePage() {
 
     const {setQueryParams, hotelDetails, queryParams,loading} = useHotelContext();
     const router = useRouter()
+    const searchParams = useSearchParams();  
 
     async function getQueryParams() {
-        console.log("searchParams",searchParams)
-        const details=await searchParams
-        console.log("details",details)
-        setQueryParams(details)
+            const obj = Object.fromEntries(searchParams.entries());
+            console.log(obj)
+            setQueryParams(obj);
     }
 
     function handleBack() {
