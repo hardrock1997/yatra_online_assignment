@@ -26,8 +26,6 @@ export default function HotelsSearcher() {
     })
     const [citySuggestions, setCitySuggestions] = useState([])
 
-    const [noHotelCity, setNoHotelCity] = useState("")
-
     const router = useRouter();
 
     useEffect(()=>{
